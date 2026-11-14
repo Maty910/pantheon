@@ -1,129 +1,115 @@
+![Pantheon banner depicting a gathering of mythological figures](assets/images/gods-banner.png)
+
 # Pantheon
 
-Pantheon is a local collection of agent prompts and shared skills for Claude and
-OpenCode. By default the installer copies nine named agents per selected runtime;
-it can also copy two shared skills and a personal PR template. It does not
-install either runtime, call models, or download software. It does not validate
-legacy frontmatter, skill discovery, or prompt behavior against
-the runtimes. Review the contents and history for your own publication and
-privacy requirements; this repository does not guarantee sanitization.
+Pantheon brings a team of specialized AI agents to Claude Code and OpenCode. Explore, build, review, and learn with a workflow designed around explicit human approval.
 
-## Public profile and release preparation
+This repository contains agent profiles, two shared skills, and a pull request template. The installer copies selected files; it does not install either runtime, configure models, credentials or MCP servers, or verify that a runtime discovers or follows the profiles.
 
-Version v0.1.0 is prepared locally. Tag creation and publication are separate,
-explicitly approved actions; this document does not establish that either has
-occurred. A planned clean-root snapshot must be created and reviewed separately:
-the preparatory checkout can still inherit private history. Preserve private
-history locally; publish only the specifically reviewed public ref, not all refs
-or private tags, and do not merge private branches into future public work.
+**Explore:** [Quick start](#quick-start) · [Agents](#agents) · [Workflow](#workflow) · [Skills and template](#skills-and-template) · [Validation](#validation)
 
-The nine OpenCode profiles deny external-directory access by default. Their
-generic `*Vault*` deny can also block unrelated project paths containing that
-text; eight profiles additionally deny `*opencode.json*` reads.
-These are conservative static rules in legacy frontmatter, not proof of runtime
-enforcement or protection for every possible vault name. External code, runners,
-or temporary directories may require a reviewed local permission change.
-No vault, AI Inbox, or Daily Notes location is preauthorized. Local access
-requires a separate Themis contract and explicit approval of exact paths and
-actions; the public profiles do not preauthorize AI Inbox writes.
+## Quick start
 
-The collection contains nine agents for each of two runtimes, two shared skills,
-one PR template, and 25 evaluation documents (12 request/expected pairs plus
-their README). The 12 evaluation cases have not been run as part of this release
-preparation; their presence does not prove runtime behavior.
-
-## Requirements and provenance
-
-Use Linux with Bash, Git and standard shell utilities (`cmp`, `cp`, `mkdir`,
-`mktemp`, `mv`, `chmod`). Python 3 is only needed for the tests. `--apply`
-requires a Git checkout whose root is the script's directory, a valid HEAD,
-the script and every selected source tracked and byte-identical to HEAD, and
-no staged or unstaged tracked changes anywhere in the repository. Untracked
-extras do not block installation and are not copied. A missing Git executable,
-missing repository, parent repository, missing HEAD, untracked installer or
-source, or dirty tracked tree blocks apply before writes. Preview reports the
-full source commit and tracked-tree state when known, otherwise `unknown`.
-Any tracked entry marked `assume-unchanged` or `skip-worktree` blocks apply,
-even when its bytes are unchanged; preview reports the state as `unknown` when
-those flags prevent verification. The installer never clears index flags.
-Apply reports the full commit of the sources for that operation. There is no
-manifest: this does not establish which commit is installed at a later time.
-
-## Preview and install
-
-From the checkout (the script also works from another current directory):
+Clone the public repository and preview the default agent installation without writing files:
 
 ```bash
-./install.sh --runtime claude --dry-run
+git clone https://github.com/Maty910/pantheon.git
+cd pantheon
 ./install.sh --runtime opencode
-./install.sh --runtime both --apply
-./install.sh --runtime both --apply --backup
-./install.sh --runtime both --components skills,template --dry-run
-./install.sh --runtime claude --components all --apply
 ```
 
-`--runtime` is mandatory and accepts `claude`, `opencode`, or `both`. The
-default is a read-only preview; `--dry-run` makes that explicit. `--apply`
-enables writes; it cannot be combined with `--dry-run`. `--backup` is valid
-only with `--apply`. `--components` is optional and defaults to `agents`;
-specify a comma-separated list of distinct names `agents`, `skills`, and
-`template` in any order, or `all` alone for all three. Invalid, empty,
-repeated, or mixed `all` values and duplicate flags fail without writing.
-`--runtime` remains mandatory even for template-only selection, although the
-template is runtime-independent. The nine agent names
-are athena, heimdall, hermes, iris, nemesis, odin, saga, themis and thor.
+After reviewing the preview, explicitly apply all components for OpenCode:
 
-Agent destinations are `$HOME/.claude/agents` and `$HOME/.config/opencode/agents`.
-The shared `review` and `retro` skills are copied as
-`$HOME/.claude/skills/<name>/SKILL.md` and/or
-`$HOME/.config/opencode/skills/<name>/SKILL.md`. Runtime selection controls
-copied paths, not skill isolation: OpenCode also supports Claude skill paths.
-See the [OpenCode skills documentation](https://opencode.ai/docs/skills) and
-[Claude Code skills documentation](https://code.claude.com/docs/en/skills).
-Those documented locations do not prove effective discovery or runtime loading.
+```bash
+./install.sh --runtime opencode --components all --apply
+```
 
-The PR template is copied once, including for `both`, to the personal neutral
-store `$HOME/.local/share/pantheon/templates/pull-request.md` for manual use.
-This does not install it into a project or enable GitHub auto-discovery.
-When OpenCode destinations are selected (agents or skills with runtime
-`opencode` or `both`), a nonempty `XDG_CONFIG_HOME` differing from
-`$HOME/.config` is rejected. Template-only selection and Claude-only selection
-allow a custom value; this does not add custom XDG support for OpenCode paths.
-Backups always use
-`$HOME/.local/state/pantheon/backups`, ignoring `XDG_STATE_HOME`.
+Existing files with different contents cause a conflict. To keep their previous bytes while replacing them, review the plan and add `--backup` to an apply command. See the installation details below for both runtimes, destinations, and safety limits.
 
-Preflight checks every selected component and runtime before any write: missing or unsafe
-sources, unsafe destination or backup path components, and differing existing
-files without `--backup` block the whole plan. Symlinks are not accepted in
-source files, destination files, or path components used for writes. Identical
-files are left alone, and reinstalling identical bytes creates no backup.
-Other files and unselected runtimes are left alone.
+<details>
+<summary>Installation details</summary>
 
-For each replacement with `--backup`, the old bytes go to a private file
-(`600`) under a unique private directory (`700`):
-`$HOME/.local/state/pantheon/backups/<id>/<runtime>/<agent>.md`,
-`<id>/skills/<runtime>/<name>/SKILL.md`, or `<id>/template/pull-request.md`.
-These paths are outside both agent and skill discovery trees. To restore manually, inspect the
-reported backup and copy the desired file back to its corresponding destination
-yourself; this overwrites that destination. There is no uninstall or automatic
-rollback. An actual I/O error can leave a partial installation, a backup, or a
-temporary file; the installer reports completed entries, the pending entry and
-backup directory, and exits nonzero. Preflight is not atomic: concurrent
-malicious changes between checks and writes (TOCTOU) are not prevented.
+1. Use Linux with Bash, Git, and standard shell utilities (`cmp`, `cp`, `mkdir`, `mktemp`, `mv`, `chmod`). Python 3 is needed to run the tests. Install Claude Code and/or OpenCode separately.
+2. Clone the repository as shown above and choose a trusted Git revision in a checkout rooted at the installer. Apply requires a valid HEAD, a clean tracked tree, and the installer and selected sources tracked and byte-identical to HEAD. Untracked extras are not copied. Tracked `assume-unchanged` or `skip-worktree` entries block apply. Gitless or archive installs are not supported.
+3. Select `--runtime claude`, `--runtime opencode`, or `--runtime both`. The runtime is required even for the runtime-independent template. Preview is the default; `--dry-run` makes it explicit. Preview reports the source revision and tracked-tree state when known.
+4. Select components with `--components agents,skills,template`, any distinct comma-separated subset, or `--components all`. The default is `agents`. For example:
 
-## Update and test
+   ```bash
+   ./install.sh --runtime claude --components skills,template --dry-run
+   ./install.sh --runtime both --components all --dry-run
+   ```
 
-To use a version later, manually select an available trusted Git tag in a clean
-checkout (for example `git checkout vX.Y.Z` with an actual existing tag), then
-run preview and reinstall with the commands above. The example is a schema, not
-a claim that any tag or release exists. A future archive `VERSION` mechanism
-is only a possible follow-up; archives are not supported by this installer.
+5. After inspecting the plan, use `--apply` to write files. It cannot be combined with `--dry-run`. Add `--backup` only with `--apply` to replace differing files after saving their previous bytes. Identical files are left unchanged and do not produce backups.
 
-Run the isolated fixture tests from this repository:
+   ```bash
+   ./install.sh --runtime both --components all --apply --backup
+   ```
+
+Agents and skills go to `~/.claude/{agents,skills}` and/or `~/.config/opencode/{agents,skills}`. The template is copied once to `~/.local/share/pantheon/templates/pull-request.md` for **manual use**; this is not a GitHub auto-discovery location. Copies do not establish effective runtime discovery or access. OpenCode can also discover Claude skill paths; see the [OpenCode](https://opencode.ai/docs/skills) and [Claude Code](https://code.claude.com/docs/en/skills) documentation.
+
+When OpenCode agent or skill destinations are selected, a nonempty `XDG_CONFIG_HOME` different from `$HOME/.config` is rejected. Backups use `~/.local/state/pantheon/backups` regardless of `XDG_STATE_HOME`. Apply reports the full source commit for that operation, but creates no persistent installation manifest.
+
+Preflight checks all selected sources and destinations before writes, rejects unsafe symlinks and blocks differing files unless backup is requested. It is not atomic: an I/O error may leave a partial installation, and concurrent changes between checks and writes are not prevented. There is no automatic rollback or uninstall.
+
+The public OpenCode profiles deny external-directory access by default; these are profile rules, not proof of runtime enforcement. No private path access is automatically enabled. Review permissions and the profiles before use.
+
+</details>
+
+## Agents
+
+These tables introduce the team; their order is not the execution order. Each agent has a profile for both runtimes.
+
+### Primary agents
+
+| Agent | Mythological identity | Role | Profiles |
+| --- | --- | --- | --- |
+| Odin | God of wisdom and poetry; All-Father (Nordic) | Read-only architecture, coordination, and mentoring | [Claude](agents/claude/odin.md) · [OpenCode](agents/opencode/odin.md) |
+| Thor | God of thunder; Odin’s son (Nordic) | Implements and validates approved scope | [Claude](agents/claude/thor.md) · [OpenCode](agents/opencode/thor.md) |
+| Themis | Titaness of divine order and justice (Greek) | Defines pre-change contracts and TDD behavior | [Claude](agents/claude/themis.md) · [OpenCode](agents/opencode/themis.md) |
+| Heimdall | Guardian of Bifröst (Nordic) | Performs the technical gate before final approval | [Claude](agents/claude/heimdall.md) · [OpenCode](agents/opencode/heimdall.md) |
+| Nemesis | Goddess of retribution (Greek) | Adds post-final-approval regression tests or records justified N/A | [Claude](agents/claude/nemesis.md) · [OpenCode](agents/opencode/nemesis.md) |
+| Saga | Goddess associated with storytelling (Nordic) | Delivery summaries and PR descriptions | [Claude](agents/claude/saga.md) · [OpenCode](agents/opencode/saga.md) |
+| Athena | Goddess of wisdom, crafts, and strategic warfare (Greek) | Learning synthesis and teachback for substantial changes | [Claude](agents/claude/athena.md) · [OpenCode](agents/opencode/athena.md) |
+
+### Supporting agents
+
+| Agent | Mythological identity | Role | Profiles |
+| --- | --- | --- | --- |
+| Iris | Goddess of the rainbow; messenger of the gods (Greek) | Product discovery, prioritization, and planning | [Claude](agents/claude/iris.md) · [OpenCode](agents/opencode/iris.md) |
+| Hermes | God of travel and boundaries; messenger of the gods (Greek) | Read-only codebase mapping and flow exploration | [Claude](agents/claude/hermes.md) · [OpenCode](agents/opencode/hermes.md) |
+
+## Workflow
+
+Odin coordinates; Iris and Hermes can help with optional product and code exploration before implementation. The intended delivery sequence is:
+
+1. **Themis** defines the behavior or validation contract.
+2. A **human gives initial approval** for the implementation and validation scope.
+3. **Thor** implements and validates within that scope. Executable behavior follows RED → GREEN → REFACTOR; docs, prompts, and configuration use before-and-after contractual checks rather than invented software tests.
+4. **Heimdall** reviews the implementation as a technical gate. Rejected changes return to Thor and then to Heimdall.
+5. A **human gives separate final delivery approval**.
+6. **Nemesis** adds regression tests, or records justified N/A for non-executable artifacts. A further implementation delta requires a new technical gate and final approval.
+7. **Saga** prepares delivery summaries and PR descriptions after regression validation or justified N/A.
+8. **Athena** supports learning and teachback for substantial changes. Learning predictions are not approvals.
+
+These profiles describe a workflow; their presence alone does not guarantee runtime enforcement.
+
+## Skills and template
+
+| Resource | Purpose |
+| --- | --- |
+| [review](skills/review/SKILL.md) | Read-only, evidence-based review with independent refutation of blocking candidates. |
+| [retro](skills/retro/SKILL.md) | Evidence-based retrospective that proposes verifiable quality improvements without executing them. |
+
+The [pull request template](templates/pull-request.md) is a manual aid for describing scope, validation, and risks. Copying it to the personal template store does not make GitHub discover it automatically.
+
+## Validation
+
+Run the installer fixture suite from the repository:
 
 ```bash
 python3 -B -m unittest discover -s tests -p test_install.py -v
 ```
 
-Tests use temporary homes and Git repositories under `/tmp/opencode`, including
-a fixture-local Git identity; they do not install into your real home.
+The [evaluation documents](evals/README.md) contain 12 declarative protocol scenarios. They were not run as part of this documentation change; their presence does not prove runtime behavior.
+
+See the [changelog](CHANGELOG.md) and [MIT license](LICENSE).
