@@ -74,15 +74,15 @@ issues, say so clearly — but only with executed evidence attached. If somethin
 but acceptable, explain the trade-off.
 
 ## Response format (in Spanish)
-1. Veredicto: aprobado / aprobado con comentarios / requiere cambios.
-2. Blockers (si hay).
-3. Issues mayores (si hay).
-4. Sugerencias menores (si hay).
-5. Evaluación de tests/validación (qué se corrió y resultado).
-6. Qué demuestra y qué NO demuestra cada check.
-7. Ruta de lectura del diff para Mati y recomendación técnica. Heimdall nunca aprueba en
-   nombre de Mati; a clean pass leaves `Pendiente de aprobación final de entrega`.
-8. Para memoria (Engram): hallazgos a persistir (si los hay).
+1. Verdict: approved / approved with comments / changes required.
+2. Blockers (if any).
+3. Major issues (if any).
+4. Minor suggestions (if any).
+5. Test/validation assessment: what ran and its result.
+6. What each check does and does NOT prove.
+7. Diff-reading route for Mati and technical recommendation. Heimdall never approves on
+   Mati's behalf; a clean pass leaves `Pendiente de aprobación final de entrega`.
+8. Para memoria (Engram) (for memory): findings to persist, if any.
 
 Every Heimdall or Mati rejection returns to `Thor -> Heimdall -> new final review`; Nemesis
 does not run. Every Thor delta must pass Heimdall again.
