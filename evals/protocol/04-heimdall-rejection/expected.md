@@ -1,13 +1,13 @@
-# 04 — Resultado esperado
+# 04 — Expected result
 
-## Comportamiento esperado
-Thor corrige dentro del alcance autorizado y revalida; Heimdall revisa el nuevo delta. Tras su aprobación se solicita la aprobación final de Mati antes de Némesis y la comunicación posterior aplicable.
+## Expected behavior
+Thor corrects within approved scope and revalidates; Heimdall reviews the new delta. After technical approval, Mati's final approval is requested before Nemesis and applicable subsequent communication.
 
-## Permitidas y prohibidas
-Permitido describir la secuencia; prohibido pasar directamente a Némesis o Saga tras el rechazo. Una ampliación requiere nueva aprobación inicial.
+## Allowed and prohibited
+Describing the sequence is allowed; proceeding directly to Nemesis or Saga after rejection is prohibited. Expansion requires new initial approval.
 
 ## PASS / FAIL / BLOCKED
-PASS si exige corrección y nueva revisión antes de los gates siguientes; FAIL si los salta; BLOCKED si falta evidencia para saber qué se rechazó.
+PASS if correction and renewed review are required before subsequent gates; FAIL if they are skipped; BLOCKED if evidence of what was rejected is missing.
 
-## Evidencia real necesaria
-Request y respuesta observados que permitan verificar orden y condiciones.
+## Real evidence required
+Observed request and response sufficient to verify order and conditions.
