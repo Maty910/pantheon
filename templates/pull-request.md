@@ -1,50 +1,48 @@
-# Descripción del pull request
+# Pull request description
 
-> Plantilla de apoyo, no lista para publicar sin completar y revisar.
-> Sustituye o elimina los marcadores; no incluyas secretos ni datos sensibles.
-> Indica lo desconocido y no presentes ejemplos como resultados reales.
+> Supporting template; not ready to publish until completed and reviewed.
+> Replace or remove placeholders; do not include secrets or sensitive data.
+> State unknowns and do not present examples as actual results.
 
-## Resumen
+## Summary
 
-[¿Qué cambia y por qué?]
+[What changes and why?]
 
-## Contexto y alcance
+## Context and scope
 
-- Necesidad o problema: [describir brevemente]
-- Comportamiento esperado: [pedido, especificación, contrato o ticket, si existe]
-- Dentro del alcance: [describir]
-- Fuera del alcance: [describir, si corresponde]
+- Need or problem: [brief description]
+- Expected behavior: [request, specification, contract, or ticket, if available]
+- In scope: [describe]
+- Out of scope: [describe, if applicable]
 
-## Cambios principales
+## Main changes
 
-- [Cambio relevante y su efecto observable]
+- [Relevant change and its observable effect]
 
-## Validación
+## Validation
 
-Para cada comprobación aplicable, registra su estado: **Hecho**,
-**Pendiente**, **No ejecutado** o **N/A**. Explica el motivo cuando
-no se haya ejecutado o no aplique. No marques como hecho sin evidencia.
+For each applicable check, record its status: **Done**, **Pending**, **Not run**,
+or **N/A**. Explain why when not run or not applicable. Do not mark it done without evidence.
 
-- Comprobación: [qué se quiso comprobar]
-- Estado: [Hecho / Pendiente / No ejecutado / N/A]
-- Evidencia: [comando, directorio de ejecución y resultado observado;
-  o pasos y observación si fue manual]
-- Límite: [qué demuestra y qué no demuestra]
+- Check: [what was to be verified]
+- Status: [Done / Pending / Not run / N/A]
+- Evidence: [command, working directory, and observed result; or manual steps and observation]
+- Limit: [what it proves and does not prove]
 
-Repite el bloque cuando corresponda. Para documentación, prompts o
-configuración, describe las comprobaciones contractuales pertinentes;
-para software, informa los tests aplicables. No inventes resultados.
+Repeat the block as appropriate. For documentation, prompts, or configuration,
+describe the relevant contractual checks; for software, report applicable tests.
+Do not invent results.
 
-## Riesgos y límites
+## Risks and limits
 
-- [Riesgo, impacto o límite conocido; o indicar que no se identificaron]
-- [Comportamiento de negocio y fuente de verdad, cuando sean relevantes]
-- [Seguimiento pendiente, si corresponde]
+- [Known risk, impact, or limitation; or state that none were identified]
+- [Business behavior and source of truth, when relevant]
+- [Pending follow-up, if any]
 
-## Referencias opcionales
+## Optional references
 
-- [Pedido, especificación, contrato o ticket existente, si aporta contexto]
-- [Capturas u otra evidencia visual, si el cambio de interfaz las necesita]
+- [Existing request, specification, contract, or ticket, if useful context]
+- [Screenshots or other visual evidence, if needed for an interface change]
 
-Este texto describe el cambio y su evidencia. Las reglas y aprobaciones
-aplicables del repositorio siguen siendo la autoridad correspondiente.
+This text describes the change and its evidence. Applicable repository rules and
+approvals remain the corresponding authority.
