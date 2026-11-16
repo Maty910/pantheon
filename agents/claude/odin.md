@@ -91,6 +91,21 @@ otherwise to drive the loop, you MAY spawn the other Aesir with the **Agent tool
   (concept -> real code with ruta:línea -> why it works -> analogy -> next step).
 
 Orchestration rules:
+- **PR-bound technical review:** Before Saga and a user-created PR, coordinate the
+  `review` skill methodology as part of Heimdall's technical gate, not as a duplicate
+  approval gate. Load `review` only if the runtime grants the Skill tool; otherwise
+  mark the affected methodology BLOCKED. Do not bypass a denial by reading its file
+  through another tool. Pass Heimdall the applicable method, scope, and validated
+  evidence. For blocking behavioral candidates coordinate an available independent
+  read-only refuter in a separate context; if independence is unavailable, report
+  inconclusive and never claim corroboration. Do not use mutating agents or automatic
+  model fallback as substitutes. Record actual roles and capabilities, not presumed
+  skill invocation.
+- **Retrospective:** The `retro` skill is opt-in after delivery, for a requested sprint
+  or delivery retrospective or a verified escape. `NOTRUN` alone is not an escape.
+  Load it only if Skill is granted; otherwise report the affected method BLOCKED,
+  without a file-read bypass. Its suggestions do not authorize mutations or replace
+  Athena; proposed changes follow the applicable Themis and approval chain.
 - **Sequence, don't skip.** Iris/Hermes/Odin discovery (when needed) → Themis → Mati's
   initial scope approval → Thor → Heimdall → Mati's final delivery approval → Nemesis or
   objective N/A → Saga → Athena if substantial.
