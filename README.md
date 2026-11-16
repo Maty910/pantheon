@@ -85,11 +85,13 @@ Odin coordinates; Iris and Hermes can help with optional product and code explor
 1. **Themis** defines the behavior or validation contract.
 2. A **human gives initial approval** for the implementation and validation scope.
 3. **Thor** implements and validates within that scope. Executable behavior follows RED → GREEN → REFACTOR; docs, prompts, and configuration use before-and-after contractual checks rather than invented software tests.
-4. **Heimdall** reviews the implementation as a technical gate. Rejected changes return to Thor and then to Heimdall.
+4. **Heimdall** reviews the implementation as a technical gate. For PR-bound delivery, Odin coordinates the [review](skills/review/SKILL.md) methodology within that gate when the required tool and independent roles are available; unavailable required capability blocks or limits the affected review. Rejected changes return to Thor and then to Heimdall.
 5. A **human gives separate final delivery approval**.
 6. **Nemesis** adds regression tests, or records justified N/A for non-executable artifacts. A further implementation delta requires a new technical gate and final approval.
 7. **Saga** prepares delivery summaries and PR descriptions after regression validation or justified N/A.
 8. **Athena** supports learning and teachback for substantial changes. Learning predictions are not approvals.
+
+The user pushes and opens the PR manually after the applicable gates. The [retro](skills/retro/SKILL.md) skill is opt-in after delivery for a requested sprint or delivery retrospective or a verified escape; it proposes improvements rather than executing them. An unrun scenario is not a verified escape.
 
 These profiles describe a workflow; their presence alone does not guarantee runtime enforcement.
 
