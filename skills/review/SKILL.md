@@ -1,84 +1,80 @@
 ---
 name: review
-description: Review read-only de cambios con evidencia causal y refutación independiente.
+description: Read-only change review with causal evidence and independent refutation.
 ---
 
 # Review
 
-## Preparación
+## Preparation
 
-Identificar el cambio, sus límites, riesgos declarados y evidencia disponible.
-Leer las reglas de revisión y el mapa de gemelos del repositorio destino cuando
-existan y sean accesibles; aplicar sus reglas sin copiarlas aquí. Registrar
-fuentes, ausencias, permisos y límites de evidencia. No inventar un mapa ni
-suponer que un control de CI existe o cubre un caso sin evidencia.
+Identify the change, its boundaries, declared risks, and available evidence. Read
+the target repository's review rules and twin map where they exist and are
+accessible; apply their rules without copying them here. Record sources, absences,
+permissions, and evidence limits. Do not invent a map or assume a CI control exists
+or covers a case without evidence.
 
-Declarar runtime, roles y modelos realmente usados, sus capacidades y permisos.
-No asignar modelos por defecto ni sustituir automáticamente un rol no disponible.
-Si falta independencia, contexto o permiso necesarios, declarar la revisión
-afectada como bloqueada o inconclusa; no simular que ocurrió.
+Report the runtime, roles, and models actually used, their capabilities, and their
+permissions. Do not assign default models or automatically substitute an unavailable
+role. If required independence, context, or permission is missing, declare the
+affected review blocked or inconclusive; do not simulate it.
 
-Informar archivos y líneas añadidas y eliminadas del cambio, además de coste
-real si está disponible; si no, indicar que es desconocido. Si el cambio supera
-400 líneas añadidas más eliminadas o supera 10 archivos, dividir la revisión por
-áreas coherentes y mantener una pasada de integración entre áreas. Esta regla
-es una heurística de organización, no una clasificación automática de riesgo.
+Report changed files and added and removed lines, plus actual cost if available;
+otherwise state that it is unknown. If the change exceeds 400 added plus removed
+lines or 10 files, partition review by coherent areas and retain an integration
+pass across areas. This is an organizational heuristic, not automatic risk
+classification.
 
-## Revisión
+## Review
 
-En modo normal, un revisor inspecciona el cambio y sus conexiones relevantes.
-Para cambios declarados de riesgo o críticos, el modo adversarial utiliza dos
-jueces independientes en lugar del revisor normal para ese objetivo; no añade
-una tercera revisión normal. Ambos registran sus conclusiones y desacuerdos.
-La clasificación de riesgo proviene del contexto y las reglas aplicables; no
-deducirla únicamente del tamaño. Los jueces no sustituyen al refutador.
+In normal mode, one reviewer inspects the change and its relevant connections.
+For changes declared risky or critical, adversarial mode uses two independent
+judges instead of the normal reviewer for that objective; it does not add a third
+normal review. Both record their conclusions and disagreements. Risk classification
+comes from context and applicable rules, not size alone. Judges do not replace the
+refuter.
 
-Seguir valores relevantes desde su origen hasta su consumo: documentar unidades,
-transformaciones y supuestos, y contrastar los extremos causales con archivo y
-línea. Aplicar el mapa de gemelos y revisar las contrapartes pertinentes.
-Indicar los límites cuando no sea posible seguir una cadena.
+Follow relevant values from origin to consumption: document units, transformations,
+and assumptions, and check causal endpoints with file and line. Apply the twin map
+and review relevant counterparts. State limitations when a chain cannot be followed.
 
-Proponer hallazgos sustentados en comportamiento y consecuencia observable.
-Para cada uno, indicar consecuencia si fuera cierto, gravedad según esa
-consecuencia —no según probabilidad— y evidencia con archivo y línea en ambos
-extremos relevantes de la cadena causal. Si falta evidencia, no presentarlo como
-hecho confirmado.
+Propose findings supported by behavior and observable consequences. For each,
+state the consequence if true, severity according to that consequence — not
+probability — and file-and-line evidence at both relevant causal endpoints. If
+evidence is missing, do not present it as confirmed fact.
 
-Excluir observaciones meramente de estilo o nombres, endurecimiento
-especulativo y controles que estén efectivamente cubiertos por CI, salvo que
-una regla aplicable o evidencia muestre un problema conductual no cubierto.
-Una revisión sin hallazgos es un resultado válido, no una garantía de ausencia
-de defectos.
+Exclude observations about style or names alone, speculative hardening, and controls
+effectively covered by CI, unless an applicable rule or evidence shows an uncovered
+behavioral problem. A review without findings is valid, not a guarantee that no
+defects exist.
 
-## Refutación
+## Refutation
 
-Por cada candidato que bloquearía por su consecuencia, un refutador independiente,
-en contexto separado, intenta desmentirlo con la evidencia accesible. Registrar:
+For each candidate whose consequence would block delivery, an independent refuter
+in a separate context attempts to disprove it using accessible evidence. Record:
 
-- `corroborado`: sobrevive al intento de refutación con evidencia suficiente;
-- `refutado`: la evidencia desmiente el candidato;
-- `latente`: el riesgo depende de una condición no establecida;
-- `inconcluso`: no alcanza la evidencia o capacidad para decidir.
+- `corroborado` (corroborated): survives refutation with sufficient evidence;
+- `refutado` (refuted): evidence disproves the candidate;
+- `latente` (latent): risk depends on a condition not established;
+- `inconcluso` (inconclusive): evidence or capability is insufficient to decide.
 
-Solo `corroborado` bloquea por ese hallazgo. No publicar el hallazgo refutado
-como resultado. Comunicar los límites relevantes de los latentes e inconclusos
-sin presentarlos como defectos confirmados. Si no puede realizarse la refutación
-independiente, no afirmar corroboración.
+Only `corroborado` blocks on that finding. Do not publish a refuted finding as a
+result. Communicate relevant limits of latent and inconclusive candidates without
+presenting them as confirmed defects. If independent refutation cannot be performed,
+do not claim corroboration.
 
-Esta regla no elimina ni sustituye gates independientes de autorización,
-evidencia o alcance. Una revisión no autoriza cambios y no reemplaza el gate
-técnico de Heimdall ni la aprobación final de Mati. Odin coordina en modo
-solo lectura según el protocolo aplicable.
+This rule does not remove or replace independent authorization, evidence, or scope
+gates. A review does not authorize changes or replace Heimdall's technical gate or
+Mati's final approval. Odin coordinates read-only under the applicable protocol.
 
-## Resultado y medición
+## Result and measurement
 
-Entregar alcance, fuentes, tamaño, coste conocido o desconocido, roles y modelos
-reales, modo, límites y hallazgos publicables con evidencia y veredicto.
-Identificar áreas no revisadas y desacuerdos no resueltos. No inferir cobertura,
-eficacia o paridad entre runtimes a partir de una sola ejecución.
+Report scope, sources, size, known or unknown cost, actual roles and models, mode,
+limits, and publishable findings with evidence and verdict. Identify unreviewed
+areas and unresolved disagreements. Do not infer coverage, effectiveness, or
+runtime parity from one execution.
 
-La mejora de calidad requiere comparación antes/después con casos y criterios
-definidos, datos permitidos y observaciones reales. Sin suite o baseline
-adecuados, declarar que la eficacia no está medida. No importar casos privados
-ni publicar información, historial o resultados sin autorización y revisión
-de privacidad aplicables.
+Quality improvement requires a before/after comparison with defined cases and
+criteria, permitted data, and real observations. Without an adequate suite or
+baseline, state that effectiveness is unmeasured. Do not import private cases or
+publish information, history, or results without applicable authorization and
+privacy review.

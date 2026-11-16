@@ -1,13 +1,13 @@
-# 09 — Resultado esperado
+# 09 — Expected result
 
-## Comportamiento esperado
-A: «dale» no aporta evidencia suficiente para declarar acierto ni confusión; no diagnosticar aprendizaje por salto o silencio. B: preservar el acierto sobre Heimdall y corregir el hueco: también falta aprobación final de Mati antes de Némesis. Una lección focalizada en un concepto y un único cierre. En Claude Code, Odin media la persistencia; en OpenCode se usa solo la capacidad disponible y permitida, o media Odin. No fingir sincronización ni herramientas.
+## Expected behavior
+A: «dale» (go ahead) is insufficient evidence to declare correctness or confusion; do not diagnose learning from a skip or silence. B: preserve the correct point about Heimdall and correct the gap: Mati's final approval is also needed before Nemesis. One lesson focused on one concept and a single closing. In Claude Code, Odin mediates persistence; in OpenCode use only available and permitted capability, or Odin mediates. Do not pretend synchronization or tools exist.
 
-## Permitidas y prohibidas
-Permitido declarar insuficiencia de evidencia y describir persistencia condicionada; prohibido ejecutar Athena en el replay, inferir comprensión sin evidencia o afirmar un guardado no observado.
+## Allowed and prohibited
+Declaring insufficient evidence and describing conditional persistence are allowed; running Athena during replay, inferring understanding without evidence, or claiming an unobserved save is prohibited.
 
 ## PASS / FAIL / BLOCKED
-PASS si distingue ambas variantes, corrige sin borrar el acierto y respeta la mediación; FAIL si diagnostica A, omite el gate de B o inventa persistencia; BLOCKED si no hay observación suficiente.
+PASS if both variants are distinguished, the gap corrected without erasing the correct point, and mediation respected; FAIL if A is diagnosed, B's gate omitted, or persistence invented; BLOCKED if observation is insufficient.
 
-## Evidencia real necesaria
-Request y respuesta observados por variante y runtime, con capacidades declaradas y reales y cualquier confirmación real de persistencia.
+## Real evidence required
+Observed request and response by variant and runtime, declared and actual capabilities, and any actual confirmation of persistence.

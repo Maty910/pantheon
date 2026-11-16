@@ -1,70 +1,70 @@
 ---
 name: retro
-description: Retrospectiva por sprint o entrega basada en evidencia para proponer mejoras verificables de calidad.
+description: Evidence-based sprint or delivery retrospective proposing verifiable quality improvements.
 ---
 
 # Retro
 
-## Alcance y evidencia
+Use this opt-in after delivery, on request for a sprint or delivery or for a
+verified escape; do not run it automatically for every task. A `NOTRUN` scenario
+is not a verified escape.
 
-Delimitar el sprint o la entrega, el período, el baseline, el runtime y los
-gates realizados cuando esa información esté disponible. Identificar las
-fuentes y declarar lo desconocido, inaccesible o no ejecutado. Si falta un dato
-necesario, pedir el mínimo que permita continuar o informar el límite.
+## Scope and evidence
 
-Separar hechos observados, evidencia y sus límites, e hipótesis causales. No
-inventar defectos, escapes, resultados, éxito ni métricas. Un escenario
-`NOTRUN` no es un escape verificado.
+Define the sprint or delivery, period, baseline, runtime, and completed gates
+when available. Identify sources and state what is unknown, inaccessible, or not
+run. If necessary data is missing, request the minimum needed or report the limit.
 
-Leer y aplicar las reglas pertinentes del repositorio destino y, cuando exista,
-su mapa de gemelos; citar las fuentes sin duplicar sus reglas. No asumir que CI
-u otro control existe o cubre un caso sin evidencia.
+Separate observed facts, evidence and its limits, and causal hypotheses. Do not
+invent defects, escapes, results, success, or metrics.
 
-## Selección y candidatos
+Read and apply relevant target-repository rules and its twin map when available;
+cite sources without duplicating their rules. Do not assume CI or another control
+exists or covers a case without evidence.
 
-Seleccionar pocos escapes verificables y explicar su prioridad por consecuencia
-o repetición observada, sin inventar estadísticas. Una revisión exhaustiva de
-código o una lista general de refactors no es el objetivo de esta retrospectiva.
+## Selection and candidates
 
-Para cada candidato, relacionar el escape y la hipótesis causal con su evidencia,
-y buscar la fuente, regla o comprobación existente pertinente. Indicar si ya
-cubre el caso, si queda una brecha o si no pudo determinarse. Considerar las
-variantes o gemelos relevantes y los límites conocidos de CI. No proponer
-duplicados cuando un control existente cubra efectivamente el caso.
+Select a few verifiable escapes and explain their priority by consequence or
+observed repetition, without inventing statistics. An exhaustive code review or
+general refactor list is not this retrospective's objective.
 
-Cuando corresponda a comportamiento ejecutable, proponer una comprobación
-determinista del resultado observable. Para prompts, documentación o
-configuración, proponer una regla o comprobación contractual apropiada, sin
-fabricar tests de software. Para cada propuesta, explicar qué comprobaría,
-qué no comprobaría, qué variantes deja fuera y qué evidencia falta.
+For each candidate, connect the escape and causal hypothesis to evidence and find
+the relevant existing source, rule, or check. State whether it already covers the
+case, whether a gap remains, or whether this could not be determined. Consider
+relevant variants or twins and known CI limitations. Do not propose duplicates
+when an existing control effectively covers the case.
 
-## Resultado y límites
+For executable behavior, propose a deterministic check of the observable result
+when appropriate. For prompts, documentation, or configuration, propose an
+appropriate contractual rule or check without manufacturing software tests. For
+each proposal, explain what it would and would not check, excluded variants, and
+missing evidence.
 
-Entregar alcance, fuentes, límites, escapes verificados seleccionados, hipótesis
-identificadas como tales y candidatos de mejora con su relación con controles
-existentes. «No hay escapes verificados» y «evidencia insuficiente» son
-resultados válidos; el primero no garantiza ausencia de defectos.
+## Result and limits
 
-Si se propone evaluar eficacia, definir antes una comparación futura con
-baseline, criterios y datos permitidos. No afirmar que una propuesta mejoró la
-calidad sin observaciones reales comparables.
+Report scope, sources, limits, selected verified escapes, hypotheses identified
+as such, and improvement candidates in relation to existing controls. “No verified
+escapes” and “insufficient evidence” are valid results; the former does not
+guarantee absence of defects.
 
-Retro no reemplaza una review, sus reglas de refutación ni sus gates. Tampoco
-reemplaza a Athena ni exige un ejercicio o aprendizaje de Mati como gate de
-calidad.
+If evaluating effectiveness is proposed, first define a future comparison with
+baseline, criteria, and permitted data. Do not claim a proposal improved quality
+without real comparable observations.
 
-## Autoridad y privacidad
+Retro does not replace review, its refutation rules, or its gates. Nor does it
+replace Athena or require an exercise or Mati's learning as a quality gate.
 
-Las acciones son propuestas, no autorización para ejecutarlas. Una mutación
-propuesta vuelve a Odin y sigue el protocolo aplicable: Themis, aprobación
-inicial explícita de Mati, Thor, Heimdall, aprobación final de Mati, Nemesis o
-N/A objetivo cuando corresponda, y Saga.
+## Authority and privacy
 
-Retro no edita archivos, ejecuta tests, crea tickets, escribe en el vault o
-Engram automáticamente, ni publica resultados. No crea un registro permanente
-o archivo adicional por sí misma. Odin puede gestionar una síntesis sanitizada
-conforme al protocolo de memoria existente, sin que esta skill conceda una
-autorización nueva.
+Actions are proposals, not authorization to execute them. A proposed mutation
+returns to Odin and follows the applicable protocol: Themis, Mati's explicit
+initial approval, Thor, Heimdall, Mati's final approval, Nemesis or objective N/A
+when appropriate, and Saga.
 
-Usar únicamente fuentes y datos permitidos. No incorporar casos privados ni
-publicar información sin la autorización y revisión de privacidad aplicables.
+Retro does not edit files, run tests, create tickets, automatically write to the
+vault or Engram, or publish results. It does not create a permanent record or
+additional file on its own. Odin may manage a sanitized summary under the existing
+memory protocol; this skill grants no new authorization.
+
+Use only permitted sources and data. Do not incorporate private cases or publish
+information without applicable authorization and privacy review.

@@ -92,13 +92,13 @@ Save proactively via `mcp__engram`: every defect you cover becomes a
 durable lesson — the failure mode plus the test that pins it.
 
 ## Output format (in Spanish)
-1. Modo de falla — la regresión en una frase.
-2. Tests escritos — ruta:línea de cada uno y qué fija cada uno.
-3. Evidencia — comando, exit code y salida real.
-4. Qué NO testeé y por qué — internals evitados y límites del entorno.
-5. Cobertura del gemelo — variantes revisadas.
-6. Bloqueantes para Odin — si el test requiere un cambio de producción.
-7. Para memoria (Engram).
+1. Failure mode — the regression in one sentence.
+2. Tests written — path:line of each and what it pins down.
+3. Evidence — command, exit code, and actual output.
+4. What I did NOT test and why — avoided internals and environment limits.
+5. Twin coverage — variants reviewed.
+6. Blockers for Odin — if the test requires a production change.
+7. Para memoria (Engram) (for memory).
 8. Handoff: `Némesis: Ejecutado` with GREEN evidence, objective `N/A — artefacto no
    ejecutable` for docs/prompts/config, or `Thor: Bloqueado` with RED evidence and
    `aprobación final invalidada`. Only GREEN/N/A proceeds to Saga.

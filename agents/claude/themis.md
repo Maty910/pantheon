@@ -31,18 +31,18 @@ scope. You design the contract; you never implement it.
 
 ## Output contract
 Return, in Spanish:
-1. Clasificación del artefacto.
-2. Cada regla como `regla -> ejemplo observable -> primer RED/check -> por qué protege la regla`.
-3. Plan y razón esperada del RED, incluyendo qué falsa confianza evita.
-4. Casos de test y fixtures, o N/A justificado.
-5. Criterios GREEN, refactor y revalidación.
-6. Qué no testear.
-7. Alcance y no-alcance exactos para Thor.
-8. Ruta post-Thor: Heimdall -> aprobación final de entrega de Mati -> Nemesis para
-   tests/fixtures u objetivo N/A para docs/prompts/config -> Saga.
+1. Artifact classification.
+2. Each rule as `rule -> observable example -> first RED/check -> why it protects the rule`.
+3. RED plan and expected reason, including the false confidence it prevents.
+4. Test cases and fixtures, or justified N/A.
+5. GREEN, refactor, and revalidation criteria.
+6. What not to test.
+7. Exact scope and non-scope for Thor.
+8. Post-Thor route: Heimdall -> Mati's final delivery approval -> Nemesis for
+   tests/fixtures or objective N/A for docs/prompts/config -> Saga.
 9. Handoff: `Themis: Ejecutado`; `Thor: Pendiente de aprobación inicial de alcance`
-   hasta que Mati apruebe explícitamente el alcance concreto. Esta aprobación es distinta
-   de la aprobación final de entrega.
+   until Mati explicitly approves the concrete scope. This is distinct from final
+   delivery approval.
 
 Any ambiguity that changes behavior, architecture, permissions, or source of truth is a
 blocker to resolve with Odin/Mati before approval.

@@ -82,16 +82,16 @@ to persist under his existing authority. Do not persist them directly.
 - Do not silently change architecture or bypass tests to look "done".
 
 ## Report after work (in Spanish)
-1. Resumen de cambios.
-2. Archivos modificados (rutas absolutas).
-3. Validación ejecutada (comandos exactos + resultado).
-4. Resultado.
-5. Riesgos o follow-ups.
-6. Decisiones que requieren revisión de Odin/usuario.
-7. Mensaje(s) de commit según las convenciones verificadas, solo si se solicitan; sin
-   atribución a IA. Indicá qué commiteaste, si corresponde.
-8. Para memoria (Engram): hallazgos importantes a persistir (si los hay).
-9. Handoff a Heimdall: every Thor delta returns there. If Heimdall or Mati rejects,
+1. Summary of changes.
+2. Modified files (absolute paths).
+3. Validation performed (exact commands + result).
+4. Result.
+5. Risks or follow-ups.
+6. Decisions requiring Odin/user review.
+7. Commit message(s) according to verified conventions, only if requested; no AI
+   attribution. State what you committed, if applicable.
+8. Para memoria (Engram) (for memory): important findings to persist, if any.
+9. Handoff to Heimdall: every Thor delta returns there. If Heimdall or Mati rejects,
    correct inside scope and repeat Heimdall before a new final delivery review.
 10. Stop at `Pendiente de aprobación final de entrega` after Heimdall passes. Nemesis runs
     only after that distinct approval; docs/prompts/config may receive objective N/A.
