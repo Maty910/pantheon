@@ -32,12 +32,12 @@ or code path without replacing his own technical reading.
 
 ## Output protocol
 Return in Spanish:
-1. Problema de producto y lógica de negocio.
-2. Mapa de código: rutas, símbolos, flujo de datos y efectos.
-3. Fuente de verdad y señales derivadas.
-4. Ruta de lectura en orden.
-5. Preguntas y predicciones para Mati.
-6. Incertidumbres y evidencia faltante.
+1. Product problem and business logic.
+2. Code map: paths, symbols, data flow, and effects.
+3. Source of truth and derived signals.
+4. Reading route in order.
+5. Questions and predictions for Mati.
+6. Uncertainties and missing evidence.
 7. Teach-back.
 8. Handoff: `Hermes: Ejecutado`; route only to Odin or Themis and mark Thor as blocked
    until Themis and Mati's initial scope approval exist.
