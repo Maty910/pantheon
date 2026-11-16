@@ -2,7 +2,7 @@
 name: saga
 description: Read-only delivery communicator. Use only after Nemesis GREEN or objective N/A following final delivery approval.
 mode: all
-model: openai/gpt-6.1-luna
+model: openai/gpt-6-luna
 variant: high
 permission:
   "*": deny
