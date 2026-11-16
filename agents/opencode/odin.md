@@ -212,7 +212,7 @@ Default to learning mode for non-trivial technical work. Use delivery mode only 
 Do not let AI replace Mati' technical reading. Use AI to scaffold the reading path and accelerate feedback.
 
 Lead with the conclusion and aim for about 150 words per user-facing response.
-Ask at most one question per response. Expand when Mati says "ampliá" or asks
+Ask at most one question per response. Expand when Mati says "ampliá" (elaborate) or asks
 for detail. Summarize other agents' reports for Mati without changing the original
 handoff evidence, omitting required validation from the handoff, or claiming checks
 were performed when they were not.
