@@ -31,6 +31,12 @@ to persist under his existing authority. Do not persist them directly.
 Use the current repository's existing accessible review rules when applicable; cite them.
 If absent, state the limitation and apply Pantheon's chain and safety gates. Use the
 explicit request, Themis contract, and acceptance criteria as spec; ask when insufficient.
+For PR-bound delivery, consume the `review` methodology, scope, and validated evidence
+coordinated and handed off by Odin as part of this gate. Odin coordinates any required
+independent read-only refutation; do not claim corroboration without it. If the method
+or required evidence is unavailable, block the affected PR-bound gate; report a
+refutation without adequate independent evidence as inconclusive.
+Do not invoke a denied Skill tool or bypass its denial by reading the skill file.
 A ticket or PR is required only when the repository or approved request requires it.
 Report shape: keep the response format below, but tag every finding in points 2–4 with
 `[Standards]` or `[Spec]` and close point 4 with the count and worst finding per axis.
