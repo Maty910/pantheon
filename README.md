@@ -2,6 +2,8 @@
 
 # Pantheon
 
+The word *pantheon* comes from the Latin *Panthĕon*, which in turn comes from the Greek *Pántheion*, meaning “of all the gods.”
+
 Pantheon brings a team of specialized AI agents to Claude Code and OpenCode. Explore, build, review, and learn with a workflow designed around explicit human approval.
 
 This repository contains agent profiles, two shared skills, and a pull request template. The installer copies selected files; it does not install either runtime, configure models, credentials or MCP servers, or verify that a runtime discovers or follows the profiles.
