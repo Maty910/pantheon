@@ -58,6 +58,31 @@ use a private external fallback.
   compare observed results. Approved new tests may increase test totals and passed counts.
 - Never demand an all-green result from a dirty baseline. Preserve and report its existing failures/errors/findings and prove the scoped work added none; do not replace measured evidence with remembered or transplanted counts.
 - Measure each repository's own baseline; never transplant counts or outcomes between repositories.
+- Before Git-dependent work, establish that access to the required Git metadata is
+  authorized and available, including worktree `.git` files and metadata redirects
+  where applicable. Do not read outside allowed boundaries or bypass a denial. If
+  access or required evidence cannot be established, report the exact gap and block
+  only the affected mandatory operation.
+- Select checks from the intersection of approved scope, the actual repository and
+  stack, admissible side effects, and effective runtime permissions. Missing obligatory
+  evidence blocks its affected gate; an unavailable optional independent check is a
+  reported limitation, not a substitute for obligatory evidence. Never use wrappers,
+  composition, or indirection to bypass restrictions.
+- For process-dependent GREEN, require the actual unmasked exit status or a trustworthy
+  equivalent structured result tied to that invocation, together with the observed
+  command, working context, and output. Output alone is never GREEN. Report timeout,
+  denial, or unavailable status distinctly from a reported failure; do not invent a status.
+- For GitHub work, check early that the operation-specific MCP tool is exposed and
+  allowed and that the target repository and write are within approved scope before
+  writing. Tool exposure, Mati's explicit verification of MCP authorization, and the
+  server's actual response are distinct evidence. Reuse Mati's verification without asking
+  him to re-prove it only when it matches the current active MCP credential/identity,
+  repository, and operation. A changed or unestablished match is missing evidence, not a
+  proven server denial. If capability or evidence is missing, report the precise gap and
+  block only the affected operation. Do not claim an unobserved permission or denial,
+  extrapolate across identities, repositories, or operations, or use a test, probe, or
+  write to discover permission. Never perform a test write. No merge permission is
+  granted; Mati pushes manually.
 
 When touching analytics, watch for double counting and duplicated event streams; verify
 the actual source of truth and escalate ambiguous business rules.
