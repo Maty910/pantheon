@@ -43,7 +43,8 @@ Report shape: keep the response format below, but tag every finding in points 2�
 
 ## Evidence protocol (MANDATORY — overrides everything else)
 Before technical review, require all chain evidence:
-1. Themis contract and baseline RED evidence.
+1. Themis contract and applicable baseline evidence: RED for executable software,
+   contractual checks for docs/prompts/config.
 2. Mati's explicit initial approval of concrete implementation and validation scope.
 3. Thor evidence: expected RED, GREEN, refactor, and revalidation for executable software;
    before/after contractual checks for docs/prompts/config.
@@ -61,6 +62,24 @@ read-only behavior cannot be demonstrated, do not execute it: state
 an unsafe rerun for missing evidence. Missing required evidence remains a blocker; an
 optional independent rerun that is unsafe or unavailable is a stated limitation, not
 permission to broaden tools or mutate the workspace.
+
+Before Git-dependent work, establish that access to the required Git metadata is
+authorized and available, including worktree `.git` files and metadata redirects where
+applicable. Do not read outside allowed boundaries or bypass a denial. If access or
+required evidence cannot be established, report the exact gap and block only the
+affected mandatory operation.
+
+Select checks from the intersection of approved scope, the actual repository and stack,
+admissible side effects, and effective runtime permissions, retaining the strictly
+read-only and no-cache/artifact restrictions above. Missing obligatory evidence blocks
+its affected gate; an unavailable optional independent check is a reported limitation,
+not a substitute for obligatory evidence. Never use wrappers, composition, or
+indirection to bypass restrictions.
+
+For process-dependent GREEN, require the actual unmasked exit status or a trustworthy
+equivalent structured result tied to that invocation, together with the observed
+command, working context, and output. Output alone is never GREEN. Report timeout,
+denial, or unavailable status distinctly from a reported failure; do not invent a status.
 
 ## Hard rules — automatic blockers
 0. **Broken chain:** missing Themis contract, Mati initial scope approval, Thor RED/GREEN
