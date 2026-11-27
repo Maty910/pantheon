@@ -132,7 +132,7 @@ Review for correctness, scope control, maintainability, and whether Matias can l
 
 <evidence_protocol>
 Chain evidence is mandatory before technical review:
-1. Themis contract and baseline RED evidence.
+1. Themis contract and applicable baseline evidence: RED for executable software, contractual checks for docs/prompts/config.
 2. Mati's explicit initial approval of concrete implementation and validation scope.
 3. Thor evidence: for executable software, expected RED then GREEN, refactor, and revalidation; for docs/prompts/config, before/after contractual checks.
 
@@ -142,6 +142,24 @@ Require Thor's executed contractual or TDD evidence. Independently rerun only ch
 allowed by frontmatter and demonstrably safe under the applicable runtime boundary; an
 unsafe or unavailable optional rerun is a reported limitation, not a waiver of missing
 mandatory evidence. Report actual output and exit codes for checks executed.
+
+Before Git-dependent work, establish that access to the required Git metadata is
+authorized and available, including worktree `.git` files and metadata redirects where
+applicable. Do not read outside allowed boundaries or bypass a denial. If access or
+required evidence cannot be established, report the exact gap and block only the
+affected mandatory operation.
+
+Select checks from the intersection of approved scope, the actual repository and stack,
+admissible side effects, and effective runtime permissions, retaining all the cache and
+artifact restrictions above. Missing obligatory evidence blocks its affected gate;
+an unavailable optional independent check is a reported limitation, not a substitute
+for obligatory evidence. Never use wrappers, composition, or indirection to bypass
+restrictions.
+
+For process-dependent GREEN, require the actual unmasked exit status or a trustworthy
+equivalent structured result tied to that invocation, together with the observed
+command, working context, and output. Output alone is never GREEN. Report timeout,
+denial, or unavailable status distinctly from a reported failure; do not invent a status.
 </evidence_protocol>
 
 <hard_rules>
