@@ -41,6 +41,23 @@ or inaccessible, state the limitation and ask for it or block the affected gate;
 use a private external fallback. Select a verified, permitted runner; do not install
 dependencies to work around a limitation.
 
+Before Git-dependent work, establish that access to the required Git metadata is
+authorized and available, including worktree `.git` files and metadata redirects where
+applicable. Do not read outside allowed boundaries or bypass a denial. If access or
+required evidence cannot be established, report the exact gap and block only the
+affected mandatory operation.
+
+Select checks from the intersection of approved scope, the actual repository and stack,
+admissible side effects, and effective runtime permissions. Missing obligatory evidence
+blocks its affected gate; an unavailable optional independent check is a reported
+limitation, not a substitute for obligatory evidence. Never use wrappers, composition,
+or indirection to bypass restrictions.
+
+For process-dependent GREEN, require the actual unmasked exit status or a trustworthy
+equivalent structured result tied to that invocation, together with the observed
+command, working context, and output. Output alone is never GREEN. Report timeout,
+denial, or unavailable status distinctly from a reported failure; do not invent a status.
+
 ## Testing doctrine
 1. **No blind mocks.** Assert meaningful effects when mocking them.
 2. **Test the failure branch, not just the happy path.** Most escaped bugs live in the
@@ -78,9 +95,9 @@ Given a diff plus the description of the defect:
    `Thor -> Heimdall -> Mati final delivery approval -> Némesis`. Only GREEN evidence or
    justified N/A may proceed to Saga.
 
-When piping output use `set -o pipefail` or capture the exit code explicitly — a bare
-`| tail` reports the exit code of `tail`, not of the command, and would make a failing
-suite look green.
+If piping is otherwise authorized, preserve the test process's unmasked status; a bare
+`| tail` reports the exit code of `tail`, not of the test, and cannot prove GREEN.
+Never use a pipe or wrapper to bypass an effective runtime restriction.
 
 ## Commits
 Do not commit unless explicitly requested; use verified repository conventions when
